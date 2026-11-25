@@ -1,0 +1,1904 @@
+/* ========================================================
+   MANNAN CORPORATION - ARCADE STYLES
+   Aesthetic: Kawaii Pastel Retro Arcade & Modern Soft UI
+   ======================================================== */
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #ffeef5 0%, #fff0f9 35%, #f2e9fc 70%, #e6f4fe 100%);
+  --cabinet-outer: #372948;
+  --cabinet-bezel: #251b35;
+  --screen-bg: #1e152a;
+  --accent-pink: #ff6584;
+  --accent-pink-hover: #ff476d;
+  --accent-purple: #845ec2;
+  --accent-mint: #4ef0bc;
+  --accent-yellow: #ffc75f;
+  --accent-blue: #4d96ff;
+  --text-main: #372948;
+  --text-muted: #726284;
+  --card-bg: rgba(255, 255, 255, 0.88);
+  --card-border: rgba(255, 255, 255, 0.6);
+  --shadow-soft: 0 10px 30px rgba(132, 94, 194, 0.12);
+  --shadow-card: 0 8px 24px rgba(255, 101, 132, 0.15);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fredoka', 'Quicksand', sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Floating ambient background elements */
+.floating-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-bubble {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.35;
+  filter: blur(40px);
+  animation: floatSlow 18s ease-in-out infinite alternate;
+}
+
+@keyframes floatSlow {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-40px) rotate(15deg); }
+  100% { transform: translateY(20px) rotate(-10deg); }
+}
+
+/* ========================================================
+   NAVBAR
+   ======================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 2px solid rgba(255, 215, 230, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  box-shadow: 0 4px 20px rgba(132, 94, 194, 0.08);
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  font-size: 2rem;
+  background: linear-gradient(135deg, #ffc75f, #ff6584);
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px rgba(255, 101, 132, 0.35);
+  animation: bobble 3s ease-in-out infinite;
+}
+
+@keyframes bobble {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(3deg); }
+}
+
+.logo-text h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.05rem;
+  letter-spacing: -0.5px;
+  color: var(--cabinet-outer);
+}
+
+.logo-text .accent-text {
+  color: var(--accent-pink);
+  text-shadow: 2px 2px 0px rgba(255, 101, 132, 0.15);
+}
+
+.corp-tag {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-purple);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pill-btn {
+  background: white;
+  border: 2px solid #ffd1e0;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.pill-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-pink);
+  box-shadow: 0 6px 16px rgba(255, 101, 132, 0.2);
+}
+
+.badge-tag {
+  background: linear-gradient(135deg, #ff6584, #845ec2);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(132, 94, 194, 0.3);
+}
+
+/* ========================================================
+   MAIN CONTAINER
+   ======================================================== */
+.main-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 30px 20px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================================
+   HERO BANNER
+   ======================================================== */
+.hero-banner {
+  background: linear-gradient(135deg, #ffffff 0%, #fff7fb 100%);
+  border: 2px solid #ffe1ee;
+  border-radius: var(--radius-lg);
+  padding: 28px 36px;
+  margin-bottom: 35px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner::after {
+  content: '★ 🌸 ★ 🍬 ★';
+  position: absolute;
+  right: -20px;
+  top: -15px;
+  font-size: 4rem;
+  color: rgba(255, 101, 132, 0.05);
+  pointer-events: none;
+}
+
+.welcome-pill {
+  display: inline-block;
+  background: #ffeaf2;
+  color: var(--accent-pink);
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.hero-content h2 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--cabinet-outer);
+  margin-bottom: 8px;
+}
+
+.hero-content p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 580px;
+}
+
+.mascot-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.mascot-avatar {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 8px 16px rgba(132, 94, 194, 0.25));
+  animation: mascotBounce 2.4s ease-in-out infinite;
+}
+
+@keyframes mascotBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.speech-bubble {
+  background: #372948;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 12px;
+  position: relative;
+  margin-top: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 6px 6px 6px;
+  border-style: solid;
+  border-color: transparent transparent #372948 transparent;
+}
+
+/* ========================================================
+   ARCADE CABINET SECTION
+   ======================================================== */
+.arcade-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 45px;
+}
+
+.arcade-cabinet {
+  background: var(--cabinet-outer);
+  border-radius: 32px;
+  padding: 16px 18px 24px;
+  width: 100%;
+  max-width: 720px;
+  box-shadow: 
+    0 20px 50px rgba(55, 41, 72, 0.35),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.5);
+  border: 4px solid #4d3a63;
+  position: relative;
+}
+
+.cabinet-marquee {
+  background: linear-gradient(90deg, #ff6584, #845ec2, #ff6584);
+  background-size: 200% 100%;
+  animation: shimmer 4s linear infinite;
+  color: white;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  padding: 10px 14px;
+  border-radius: 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(255, 101, 132, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.3);
+  letter-spacing: 1px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.star-blink {
+  animation: blink 1.2s infinite;
+  display: inline-block;
+  color: #fffa65;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.cabinet-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  background: var(--cabinet-bezel);
+  border-radius: 12px;
+  color: white;
+}
+
+.game-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--accent-mint);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-mint);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+.active-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.75rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.scoreboard {
+  display: flex;
+  gap: 16px;
+}
+
+.score-item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.score-label {
+  font-size: 0.55rem;
+  color: #a493b8;
+}
+
+.score-val {
+  font-size: 0.9rem;
+  color: var(--accent-yellow);
+  min-width: 32px;
+}
+
+/* Screen Viewport */
+.cabinet-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 600 / 400;
+  max-height: 440px;
+  background: var(--screen-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 4px solid #1a1224;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.7);
+}
+
+/* CRT scanlines effect */
+.cabinet-screen::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+canvas#gameCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #181124;
+}
+
+/* Memory Game Grid */
+/* ========================================================
+   HORROR GAME & 4D HUD STYLES
+   ======================================================== */
+.arcade-cabinet.horror-mode {
+  border-color: #881337;
+  box-shadow: 
+    0 25px 60px rgba(136, 19, 55, 0.45),
+    0 0 35px rgba(225, 29, 72, 0.25),
+    inset 0 2px 4px rgba(255, 100, 100, 0.2),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.8);
+  animation: cabinetFlicker 6s infinite;
+}
+
+@keyframes cabinetFlicker {
+  0%, 94%, 98%, 100% { filter: brightness(1); }
+  95% { filter: brightness(0.8) hue-rotate(10deg); }
+  97% { filter: brightness(1.2) hue-rotate(-10deg); }
+}
+
+.arcade-cabinet.horror-mode .cabinet-marquee {
+  background: linear-gradient(90deg, #991b1b, #dc2626, #7f1d1d);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.6);
+  letter-spacing: 2px;
+}
+
+.horror-card {
+  border-color: #f43f5e !important;
+  background: linear-gradient(145deg, #ffffff 0%, #fff1f2 100%) !important;
+  box-shadow: 0 10px 28px rgba(244, 63, 94, 0.2) !important;
+}
+
+.horror-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(225, 29, 72, 0.35) !important;
+  border-color: #e11d48 !important;
+}
+
+.horror-badge {
+  background: #ffe4e6 !important;
+  color: #be123c !important;
+  font-weight: 800;
+  border: 1px solid #fecdd3;
+  animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.card-play-btn.horror-btn {
+  background: #e11d48;
+  color: white;
+}
+
+.card-play-btn.horror-btn:hover {
+  background: #be123c;
+}
+
+/* 4D Horror HUD inside Cabinet Screen */
+.horror-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 14px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.hud-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 10, 25, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hud-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-label {
+  font-size: 0.55rem;
+  color: #d1d5db;
+}
+
+.hud-bar-wrap {
+  width: 70px;
+  height: 10px;
+  background: #374151;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #111827;
+}
+
+.hud-bar {
+  height: 100%;
+  width: 100%;
+  transition: width 0.2s, background-color 0.3s;
+}
+
+.hud-bar.sanity {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.hud-bar.battery {
+  background: linear-gradient(90deg, #38bdf8, #0284c7);
+}
+
+.hud-dimension {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.58rem;
+  color: #fbcfe8;
+  background: rgba(131, 24, 67, 0.6);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #be185d;
+}
+
+.dim-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f43f5e;
+  box-shadow: 0 0 8px #f43f5e;
+  animation: blink 0.8s infinite;
+}
+
+.hud-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 10, 25, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.55rem;
+  color: #e5e7eb;
+}
+
+.relic-highlight {
+  color: #fbbf24;
+  text-shadow: 0 0 6px #f59e0b;
+}
+
+.horror-tip {
+  color: #9ca3af;
+  font-size: 0.5rem;
+}
+
+/* Blood Vignette & Distortion */
+.blood-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 55%, rgba(185, 28, 28, 0) 100%);
+  transition: background 0.25s ease;
+  z-index: 6;
+}
+
+.blood-vignette.danger {
+  background: radial-gradient(circle, transparent 40%, rgba(185, 28, 28, 0.55) 90%, rgba(127, 29, 29, 0.85) 100%);
+  animation: dangerThump 1s infinite;
+}
+
+@keyframes dangerThump {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.02); opacity: 1; }
+}
+
+/* 4D Dimension Warping chromatic aberration */
+.cabinet-screen.dimension-4d {
+  filter: contrast(1.25) saturate(1.4) drop-shadow(0 0 15px rgba(225, 29, 72, 0.6));
+  animation: warpShake 0.15s infinite;
+}
+
+@keyframes warpShake {
+  0% { transform: translate(0px, 0px); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, 1px); }
+}
+
+/* Jumpscare Screen */
+.jumpscare-face {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, #7f1d1d 0%, #000 85%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: scareFlash 0.1s infinite;
+}
+
+@keyframes scareFlash {
+  0%, 100% { filter: invert(0) brightness(1.2); }
+  50% { filter: invert(1) brightness(1.8); }
+}
+
+.scare-eyes {
+  font-size: 4rem;
+  letter-spacing: 20px;
+  animation: eyeShake 0.08s infinite;
+}
+
+.scare-teeth {
+  font-size: 3rem;
+  letter-spacing: 6px;
+}
+
+.scare-text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
+  color: #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+  margin-top: 15px;
+}
+
+@keyframes eyeShake {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-3px, 3px) scale(1.2); }
+  100% { transform: translate(3px, -2px) scale(1.1); }
+}
+
+/* Horror virtual control buttons */
+.btn-warp {
+  background: linear-gradient(135deg, #be185d, #831843);
+  color: #fdf2f8;
+  border: 1px solid #f472b6;
+}
+
+.btn-flashlight {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #e0f2fe;
+  border: 1px solid #38bdf8;
+}
+
+/* ========================================================
+   TRAILER THEATER SECTION
+   ======================================================== */
+.trailer-section {
+  background: linear-gradient(135deg, #231934 0%, #35214c 100%);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  margin-bottom: 50px;
+  color: white;
+  border: 2px solid #573b7a;
+  box-shadow: 0 12px 35px rgba(35, 25, 52, 0.3);
+}
+
+.trailer-info {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.trailer-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ffc75f;
+  background: rgba(255, 199, 95, 0.15);
+  padding: 4px 12px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.trailer-info h3 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.trailer-info p {
+  color: #c7b9db;
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+}
+
+.trailer-toggle-btn {
+  background: linear-gradient(135deg, #ff6584, #ff476d);
+  color: white;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 101, 132, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.trailer-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 101, 132, 0.6);
+}
+
+.trailer-player-container {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.trailer-player-container video {
+  max-width: 100%;
+  width: 700px;
+  max-height: 400px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff6584;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.game-overlay-container {
+  position: absolute;
+  inset: 0;
+  background: #1e152a;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 24px;
+  z-index: 3;
+}
+
+.game-overlay-container/* ========================================================
+   HORROR GAME & 4D HUD STYLES
+   ======================================================== */
+.arcade-cabinet.horror-mode {
+  border-color: #881337;
+  box-shadow: 
+    0 25px 60px rgba(136, 19, 55, 0.45),
+    0 0 35px rgba(225, 29, 72, 0.25),
+    inset 0 2px 4px rgba(255, 100, 100, 0.2),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.8);
+  animation: cabinetFlicker 6s infinite;
+}
+
+@keyframes cabinetFlicker {
+  0%, 94%, 98%, 100% { filter: brightness(1); }
+  95% { filter: brightness(0.8) hue-rotate(10deg); }
+  97% { filter: brightness(1.2) hue-rotate(-10deg); }
+}
+
+.arcade-cabinet.horror-mode .cabinet-marquee {
+  background: linear-gradient(90deg, #991b1b, #dc2626, #7f1d1d);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.6);
+  letter-spacing: 2px;
+}
+
+.horror-card {
+  border-color: #f43f5e !important;
+  background: linear-gradient(145deg, #ffffff 0%, #fff1f2 100%) !important;
+  box-shadow: 0 10px 28px rgba(244, 63, 94, 0.2) !important;
+}
+
+.horror-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(225, 29, 72, 0.35) !important;
+  border-color: #e11d48 !important;
+}
+
+.horror-badge {
+  background: #ffe4e6 !important;
+  color: #be123c !important;
+  font-weight: 800;
+  border: 1px solid #fecdd3;
+  animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.card-play-btn.horror-btn {
+  background: #e11d48;
+  color: white;
+}
+
+.card-play-btn.horror-btn:hover {
+  background: #be123c;
+}
+
+/* 4D Horror HUD inside Cabinet Screen */
+.horror-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 14px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.hud-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 10, 25, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hud-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-label {
+  font-size: 0.55rem;
+  color: #d1d5db;
+}
+
+.hud-bar-wrap {
+  width: 70px;
+  height: 10px;
+  background: #374151;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #111827;
+}
+
+.hud-bar {
+  height: 100%;
+  width: 100%;
+  transition: width 0.2s, background-color 0.3s;
+}
+
+.hud-bar.sanity {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.hud-bar.battery {
+  background: linear-gradient(90deg, #38bdf8, #0284c7);
+}
+
+.hud-dimension {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.58rem;
+  color: #fbcfe8;
+  background: rgba(131, 24, 67, 0.6);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #be185d;
+}
+
+.dim-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f43f5e;
+  box-shadow: 0 0 8px #f43f5e;
+  animation: blink 0.8s infinite;
+}
+
+.hud-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 10, 25, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.55rem;
+  color: #e5e7eb;
+}
+
+.relic-highlight {
+  color: #fbbf24;
+  text-shadow: 0 0 6px #f59e0b;
+}
+
+.horror-tip {
+  color: #9ca3af;
+  font-size: 0.5rem;
+}
+
+/* Blood Vignette & Distortion */
+.blood-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 55%, rgba(185, 28, 28, 0) 100%);
+  transition: background 0.25s ease;
+  z-index: 6;
+}
+
+.blood-vignette.danger {
+  background: radial-gradient(circle, transparent 40%, rgba(185, 28, 28, 0.55) 90%, rgba(127, 29, 29, 0.85) 100%);
+  animation: dangerThump 1s infinite;
+}
+
+@keyframes dangerThump {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.02); opacity: 1; }
+}
+
+/* 4D Dimension Warping chromatic aberration */
+.cabinet-screen.dimension-4d {
+  filter: contrast(1.25) saturate(1.4) drop-shadow(0 0 15px rgba(225, 29, 72, 0.6));
+  animation: warpShake 0.15s infinite;
+}
+
+@keyframes warpShake {
+  0% { transform: translate(0px, 0px); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, 1px); }
+}
+
+/* Jumpscare Screen */
+.jumpscare-face {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, #7f1d1d 0%, #000 85%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: scareFlash 0.1s infinite;
+}
+
+@keyframes scareFlash {
+  0%, 100% { filter: invert(0) brightness(1.2); }
+  50% { filter: invert(1) brightness(1.8); }
+}
+
+.scare-eyes {
+  font-size: 4rem;
+  letter-spacing: 20px;
+  animation: eyeShake 0.08s infinite;
+}
+
+.scare-teeth {
+  font-size: 3rem;
+  letter-spacing: 6px;
+}
+
+.scare-text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
+  color: #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+  margin-top: 15px;
+}
+
+@keyframes eyeShake {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-3px, 3px) scale(1.2); }
+  100% { transform: translate(3px, -2px) scale(1.1); }
+}
+
+/* Horror virtual control buttons */
+.btn-warp {
+  background: linear-gradient(135deg, #be185d, #831843);
+  color: #fdf2f8;
+  border: 1px solid #f472b6;
+}
+
+.btn-flashlight {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #e0f2fe;
+  border: 1px solid #38bdf8;
+}
+
+/* ========================================================
+   TRAILER THEATER SECTION
+   ======================================================== */
+.trailer-section {
+  background: linear-gradient(135deg, #231934 0%, #35214c 100%);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  margin-bottom: 50px;
+  color: white;
+  border: 2px solid #573b7a;
+  box-shadow: 0 12px 35px rgba(35, 25, 52, 0.3);
+}
+
+.trailer-info {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.trailer-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ffc75f;
+  background: rgba(255, 199, 95, 0.15);
+  padding: 4px 12px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.trailer-info h3 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.trailer-info p {
+  color: #c7b9db;
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+}
+
+.trailer-toggle-btn {
+  background: linear-gradient(135deg, #ff6584, #ff476d);
+  color: white;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 101, 132, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.trailer-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 101, 132, 0.6);
+}
+
+.trailer-player-container {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.trailer-player-container video {
+  max-width: 100%;
+  width: 700px;
+  max-height: 400px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff6584;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.memory-meta {
+  display: flex;
+  justify-content: space-between;
+  color: #f7d6e6;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.65rem;
+  margin-bottom: 14px;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 12px;
+  flex: 1;
+}
+
+.memory-card {
+  background: #39294e;
+  border: 2px solid #5d467c;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.25s, background 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.memory-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-pink);
+}
+
+.memory-card.flipped {
+  background: #ffffff;
+  border-color: #ffd1e0;
+  transform: rotateY(180deg);
+}
+
+.memory-card.matched {
+  background: #e3fafc;
+  border-color: var(--accent-mint);
+  animation: popSuccess 0.4s ease-out;
+}
+
+@keyframes popSuccess {
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Screen Overlay (Menu / Game Over) */
+.screen-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 15, 36, 0.88);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.screen-overlay/* ========================================================
+   HORROR GAME & 4D HUD STYLES
+   ======================================================== */
+.arcade-cabinet.horror-mode {
+  border-color: #881337;
+  box-shadow: 
+    0 25px 60px rgba(136, 19, 55, 0.45),
+    0 0 35px rgba(225, 29, 72, 0.25),
+    inset 0 2px 4px rgba(255, 100, 100, 0.2),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.8);
+  animation: cabinetFlicker 6s infinite;
+}
+
+@keyframes cabinetFlicker {
+  0%, 94%, 98%, 100% { filter: brightness(1); }
+  95% { filter: brightness(0.8) hue-rotate(10deg); }
+  97% { filter: brightness(1.2) hue-rotate(-10deg); }
+}
+
+.arcade-cabinet.horror-mode .cabinet-marquee {
+  background: linear-gradient(90deg, #991b1b, #dc2626, #7f1d1d);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.6);
+  letter-spacing: 2px;
+}
+
+.horror-card {
+  border-color: #f43f5e !important;
+  background: linear-gradient(145deg, #ffffff 0%, #fff1f2 100%) !important;
+  box-shadow: 0 10px 28px rgba(244, 63, 94, 0.2) !important;
+}
+
+.horror-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(225, 29, 72, 0.35) !important;
+  border-color: #e11d48 !important;
+}
+
+.horror-badge {
+  background: #ffe4e6 !important;
+  color: #be123c !important;
+  font-weight: 800;
+  border: 1px solid #fecdd3;
+  animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.card-play-btn.horror-btn {
+  background: #e11d48;
+  color: white;
+}
+
+.card-play-btn.horror-btn:hover {
+  background: #be123c;
+}
+
+/* 4D Horror HUD inside Cabinet Screen */
+.horror-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 14px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.hud-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 10, 25, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hud-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-label {
+  font-size: 0.55rem;
+  color: #d1d5db;
+}
+
+.hud-bar-wrap {
+  width: 70px;
+  height: 10px;
+  background: #374151;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #111827;
+}
+
+.hud-bar {
+  height: 100%;
+  width: 100%;
+  transition: width 0.2s, background-color 0.3s;
+}
+
+.hud-bar.sanity {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.hud-bar.battery {
+  background: linear-gradient(90deg, #38bdf8, #0284c7);
+}
+
+.hud-dimension {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.58rem;
+  color: #fbcfe8;
+  background: rgba(131, 24, 67, 0.6);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #be185d;
+}
+
+.dim-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f43f5e;
+  box-shadow: 0 0 8px #f43f5e;
+  animation: blink 0.8s infinite;
+}
+
+.hud-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 10, 25, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.55rem;
+  color: #e5e7eb;
+}
+
+.relic-highlight {
+  color: #fbbf24;
+  text-shadow: 0 0 6px #f59e0b;
+}
+
+.horror-tip {
+  color: #9ca3af;
+  font-size: 0.5rem;
+}
+
+/* Blood Vignette & Distortion */
+.blood-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 55%, rgba(185, 28, 28, 0) 100%);
+  transition: background 0.25s ease;
+  z-index: 6;
+}
+
+.blood-vignette.danger {
+  background: radial-gradient(circle, transparent 40%, rgba(185, 28, 28, 0.55) 90%, rgba(127, 29, 29, 0.85) 100%);
+  animation: dangerThump 1s infinite;
+}
+
+@keyframes dangerThump {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.02); opacity: 1; }
+}
+
+/* 4D Dimension Warping chromatic aberration */
+.cabinet-screen.dimension-4d {
+  filter: contrast(1.25) saturate(1.4) drop-shadow(0 0 15px rgba(225, 29, 72, 0.6));
+  animation: warpShake 0.15s infinite;
+}
+
+@keyframes warpShake {
+  0% { transform: translate(0px, 0px); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, 1px); }
+}
+
+/* Jumpscare Screen */
+.jumpscare-face {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, #7f1d1d 0%, #000 85%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: scareFlash 0.1s infinite;
+}
+
+@keyframes scareFlash {
+  0%, 100% { filter: invert(0) brightness(1.2); }
+  50% { filter: invert(1) brightness(1.8); }
+}
+
+.scare-eyes {
+  font-size: 4rem;
+  letter-spacing: 20px;
+  animation: eyeShake 0.08s infinite;
+}
+
+.scare-teeth {
+  font-size: 3rem;
+  letter-spacing: 6px;
+}
+
+.scare-text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
+  color: #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+  margin-top: 15px;
+}
+
+@keyframes eyeShake {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-3px, 3px) scale(1.2); }
+  100% { transform: translate(3px, -2px) scale(1.1); }
+}
+
+/* Horror virtual control buttons */
+.btn-warp {
+  background: linear-gradient(135deg, #be185d, #831843);
+  color: #fdf2f8;
+  border: 1px solid #f472b6;
+}
+
+.btn-flashlight {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #e0f2fe;
+  border: 1px solid #38bdf8;
+}
+
+/* ========================================================
+   TRAILER THEATER SECTION
+   ======================================================== */
+.trailer-section {
+  background: linear-gradient(135deg, #231934 0%, #35214c 100%);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  margin-bottom: 50px;
+  color: white;
+  border: 2px solid #573b7a;
+  box-shadow: 0 12px 35px rgba(35, 25, 52, 0.3);
+}
+
+.trailer-info {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.trailer-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ffc75f;
+  background: rgba(255, 199, 95, 0.15);
+  padding: 4px 12px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.trailer-info h3 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.trailer-info p {
+  color: #c7b9db;
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+}
+
+.trailer-toggle-btn {
+  background: linear-gradient(135deg, #ff6584, #ff476d);
+  color: white;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 101, 132, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.trailer-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 101, 132, 0.6);
+}
+
+.trailer-player-container {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.trailer-player-container video {
+  max-width: 100%;
+  width: 700px;
+  max-height: 400px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff6584;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.overlay-card {
+  text-align: center;
+  background: #332447;
+  border: 3px solid #ff6584;
+  padding: 30px 36px;
+  border-radius: 24px;
+  color: white;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 101, 132, 0.3);
+  max-width: 420px;
+  width: 90%;
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.overlay-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.overlay-card h3 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.1rem;
+  color: #ffc75f;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.overlay-card p {
+  color: #e5d8f6;
+  font-size: 0.95rem;
+  margin-bottom: 22px;
+  line-height: 1.4;
+}
+
+.play-btn {
+  background: linear-gradient(135deg, #ff6584, #ff476d);
+  color: white;
+  border: none;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.85rem;
+  padding: 14px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255, 71, 109, 0.5);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.play-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(255, 71, 109, 0.7);
+}
+
+.play-btn:active {
+  transform: translateY(1px);
+}
+
+.overlay-keys {
+  font-size: 0.75rem;
+  color: #a493b8;
+  margin-top: 14px;
+}
+
+/* Arcade Cabinet Controls */
+.cabinet-controls {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px 10px;
+  background: #2b1f3c;
+  border-radius: 20px;
+}
+
+/* D-Pad */
+.dpad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.d-mid-row {
+  display: flex;
+  align-items: center;
+}
+
+.d-btn {
+  background: #47355f;
+  color: #fffa65;
+  border: 2px solid #5f487e;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 4px 0 #20172e;
+  transition: all 0.1s;
+  user-select: none;
+}
+
+.d-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #20172e;
+  background: var(--accent-pink);
+  color: #fff;
+}
+
+.d-center {
+  width: 32px;
+  height: 32px;
+  background: #39284f;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 14px;
+}
+
+.act-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.65rem;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.4);
+  transition: all 0.1s;
+  user-select: none;
+}
+
+.btn-action {
+  background: linear-gradient(135deg, #4ef0bc, #38d39f);
+  color: #123f30;
+}
+
+.btn-restart {
+  background: linear-gradient(135deg, #ffc75f, #ff9642);
+  color: #4b2d00;
+}
+
+.act-btn:hover {
+  filter: brightness(1.1);
+}
+
+.act-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================================
+   GAME SELECTOR SHELF
+   ======================================================== */
+.game-shelf {
+  margin-bottom: 50px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.section-heading h3 {
+  font-size: 1.6rem;
+  color: var(--cabinet-outer);
+  font-weight: 700;
+}
+
+.section-heading p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+}
+
+.game-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+}
+
+.game-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-pink);
+  box-shadow: 0 16px 36px rgba(255, 101, 132, 0.22);
+}
+
+.game-card.active {
+  border-color: var(--accent-purple);
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(132, 94, 194, 0.25);
+  outline: 3px solid rgba(132, 94, 194, 0.2);
+}
+
+.card-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: #e8dbfc;
+  color: var(--accent-purple);
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+
+.card-badge.hot {
+  background: #ffe3ea;
+  color: var(--accent-pink);
+}
+
+.card-badge.cute {
+  background: #e3fafc;
+  color: #1098ad;
+}
+
+.card-badge.arcade {
+  background: #fff3bf;
+  color: #d9480f;
+}
+
+.card-icon {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.game-card h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cabinet-outer);
+  margin-bottom: 6px;
+}
+
+.game-card p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed #ffd1e0;
+  padding-top: 14px;
+}
+
+.card-footer .tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.card-play-btn {
+  background: #ffeaf2;
+  color: var(--accent-pink);
+  border: none;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.game-card:hover .card-play-btn {
+  background: var(--accent-pink);
+  color: white;
+}
+
+/* ========================================================
+   PERKS / HIGHLIGHTS SECTION
+   ======================================================== */
+.perks-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.perk-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  padding: 22px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.perk-icon {
+  font-size: 2.2rem;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.perk-card h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--cabinet-outer);
+  margin-bottom: 6px;
+}
+
+.perk-card p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ========================================================
+   FOOTER
+   ======================================================== */
+.footer {
+  background: #ffffff;
+  border-top: 2px solid #ffe1ee;
+  padding: 40px 20px 30px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-decorations {
+  font-size: 1.6rem;
+  letter-spacing: 12px;
+  margin-bottom: 16px;
+}
+
+.footer-brand h3 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.95rem;
+  color: var(--cabinet-outer);
+  margin-bottom: 6px;
+}
+
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #f2e9fc;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #9284a4;
+}
+
+/* ========================================================
+   RESPONSIVE DESIGN
+   ======================================================== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 16px;
+  }
+  .logo-text h1 {
+    font-size: 0.85rem;
+  }
+  .badge-tag {
+    display: none;
+  }
+  .hero-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+  }
+  .hero-content h2 {
+    font-size: 1.4rem;
+  }
+  .arcade-cabinet {
+    border-radius: 24px;
+    padding: 12px 12px 18px;
+  }
+  .cabinet-screen {
+    max-height: 320px;
+  }
+  .cabinet-marquee {
+    font-size: 0.65rem;
+  }
+  .d-btn {
+    width: 38px;
+    height: 38px;
+  }
+  .d-center {
+    width: 24px;
+    height: 24px;
+  }
+  .act-btn {
+    padding: 10px 14px;
+    font-size: 0.55rem;
+  }
+}
